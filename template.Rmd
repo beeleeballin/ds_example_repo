@@ -1,0 +1,48 @@
+---
+title: "Simple document"
+author: "Brian Lee"
+date: 2020-09-23
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: hide
+---
+
+I'm an R Markdown document! 
+
+```{r}
+library(tidyverse)
+```
+
+
+# Section 1
+
+Here's a **code chunk** that samples from
+a _normal distribution_:
+
+```{r create samp and find length}
+samp = rnorm(1000)
+length(samp)
+```
+
+# Section 2
+
+I can take the mean of the sample, too!
+The mean is `r mean(samp)`.
+
+# Section 3
+
+Let's try the in-class assessment.
+
+```{r my attempt at the assessment}
+la_df = tibble(
+  x = rnorm(500, mean=1),
+  pos_x = x > 0,
+  abs_x = abs(x)
+)
+
+ggplot(la_df, aes(x=abs_x)) + geom_histogram()
+
+median_x = median(pull(la_df, x))
+```
